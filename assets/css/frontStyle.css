@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Light gray background */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #264653; /* Dark teal background */
+    color: #ffffff; /* White text */
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 36px;
+}
+
+nav ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.hero {
+    background-image: url('library-background.jpg'); /* Background image path */
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 100px 0;
+    color: #ffffff; /* White text */
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e76f51; /* Rusty orange button color */
+    color: #ffffff; /* White text */
+    text-decoration: none;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #f4a261; /* Lighter orange button hover color */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #ffffff; /* White container background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for container */
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333333; /* Dark gray text color */
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555555; /* Medium gray text color */
+}
+
+footer {
+    background-color: #264653; /* Dark teal footer background */
+    color: #ffffff; /* White text */
+    padding: 20px 0;
+    text-align: center;
+}
