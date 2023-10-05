@@ -24,6 +24,45 @@ else{?>
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <style>
+    .dashboard-box {
+        text-align: center;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s;
+    }
+
+    .dashboard-box:hover {
+        transform: translateY(-5px);
+    }
+
+    .dashboard-box i {
+        color: #333;
+    }
+
+    .success-box {
+        border: 2px solid #5cb85c;
+        color: #5cb85c;
+    }
+
+    .warning-box {
+        border: 2px solid #f0ad4e;
+        color: #f0ad4e;
+    }
+
+    .dashboard-box h3 {
+        font-size: 36px;
+        margin-bottom: 5px;
+    }
+
+    .dashboard-box p {
+        font-size: 18px;
+    }
+</style>
+
 
 </head>
 
@@ -32,82 +71,67 @@ else{?>
     <?php include('includes/header.php');?>
     <!-- MENU SECTION END-->
     <div class="content-wrapper">
-        <div class="container">
-            <div class="row pad-botm">
-                <div class="col-md-12">
-                    <h4 class="header-line">User DASHBOARD</h4>
-
-                </div>
-
-            </div>
-
-            <div class="row">
-
-
-                <a href="listed-books.php">
-                    <div class="col-md-4 col-sm-4 col-xs-6">
-                        <div class="alert alert-success back-widget-set text-center">
-                            <i class="fa fa-book fa-5x"></i>
-                            <?php 
-$sql ="SELECT id from tblbooks ";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$listdbooks=$query->rowCount();
-?>
-                            <h3><?php echo htmlentities($listdbooks);?></h3>
-                            Books Listed
-                        </div>
-                    </div>
-                </a>
-
-                <div class="col-md-4 col-sm-4 col-xs-6">
-                    <div class="alert alert-warning back-widget-set text-center">
-                        <i class="fa fa-recycle fa-5x"></i>
+    <div class="container">
+    <br><br><br>
+        <div class="row">
+            <a href="listed-books.php">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="dashboard-box success-box">
+                        <i class="fa fa-book fa-5x"></i>
                         <?php 
-$rsts=0;
- $sid=$_SESSION['stdid'];
-$sql2 ="SELECT id from tblissuedbookdetails where StudentID=:sid and (ReturnStatus=:rsts || ReturnStatus is null || ReturnStatus='')";
-$query2 = $dbh -> prepare($sql2);
-$query2->bindParam(':sid',$sid,PDO::PARAM_STR);
-$query2->bindParam(':rsts',$rsts,PDO::PARAM_STR);
-$query2->execute();
-$results2=$query2->fetchAll(PDO::FETCH_OBJ);
-$returnedbooks=$query2->rowCount();
-?>
-
-                        <h3><?php echo htmlentities($returnedbooks);?></h3>
-                        Books Not Returned Yet
+                            $sql ="SELECT id from tblbooks ";
+                            $query = $dbh -> prepare($sql);
+                            $query->execute();
+                            $results=$query->fetchAll(PDO::FETCH_OBJ);
+                            $listdbooks=$query->rowCount();
+                        ?>
+                        <h3><?php echo htmlentities($listdbooks);?></h3>
+                        <p>Books Listed</p>
                     </div>
                 </div>
-                
+            </a>
 
-                <a href="issued-books.php">
-                    <div class="col-md-4 col-sm-4 col-xs-6">
-                        <div class="alert alert-success back-widget-set text-center">
-                            <i class="fa fa-book fa-5x"></i>
-                            <?php 
-$sid=$_SESSION['stdid'];
-$sql="SELECT tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as rid,tblissuedbookdetails.fine from  tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId join tblbooks on tblbooks.id=tblissuedbookdetails.BookId where tblstudents.StudentId=:sid order by tblissuedbookdetails.id desc";
-$query = $dbh -> prepare($sql);
-$query-> bindParam(':sid', $sid, PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-?>
-                        <h3><?php echo htmlentities($query->rowCount());?></h3>
-  
-                            Issued Books
-                        </div>
-                    </div>
-                </a>
-
-
-
-
-
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="dashboard-box warning-box">
+                    <i class="fa fa-recycle fa-5x"></i>
+                    <?php 
+                        $rsts=0;
+                        $sid=$_SESSION['stdid'];
+                        $sql2 ="SELECT id from tblissuedbookdetails where StudentID=:sid and (ReturnStatus=:rsts || ReturnStatus is null || ReturnStatus='')";
+                        $query2 = $dbh -> prepare($sql2);
+                        $query2->bindParam(':sid',$sid,PDO::PARAM_STR);
+                        $query2->bindParam(':rsts',$rsts,PDO::PARAM_STR);
+                        $query2->execute();
+                        $results2=$query2->fetchAll(PDO::FETCH_OBJ);
+                        $returnedbooks=$query2->rowCount();
+                    ?>
+                    <h3><?php echo htmlentities($returnedbooks);?></h3>
+                    <p>Books Not Returned Yet</p>
+                </div>
             </div>
+
+            <a href="issued-books.php">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="dashboard-box success-box">
+                        <i class="fa fa-book fa-5x"></i>
+                        <?php 
+                            $sid=$_SESSION['stdid'];
+                            $sql="SELECT tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as rid,tblissuedbookdetails.fine from  tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId join tblbooks on tblbooks.id=tblissuedbookdetails.BookId where tblstudents.StudentId=:sid order by tblissuedbookdetails.id desc";
+                            $query = $dbh -> prepare($sql);
+                            $query-> bindParam(':sid', $sid, PDO::PARAM_STR);
+                            $query->execute();
+                            $results=$query->fetchAll(PDO::FETCH_OBJ);
+                        ?>
+                        <h3><?php echo htmlentities($query->rowCount());?></h3>
+                        <p>Issued Books</p>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
+</div>
+
+
     <!-- CONTENT-WRAPPER SECTION END-->
     <?php include('includes/footer.php');?>
     <!-- FOOTER SECTION END-->

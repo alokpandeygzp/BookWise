@@ -1,41 +1,61 @@
 <?php 
 session_start();
 include('includes/config.php');
-error_reporting(0);
-if(isset($_POST['signup']))
-{
- 
-//Code for student ID
-$count_my_page = ("studentid.txt");
-$hits = file($count_my_page);
-$hits[0] ++;
-$fp = fopen($count_my_page , "w");
-fputs($fp , "$hits[0]");
-fclose($fp); 
-$StudentId= $hits[0];   
-$fname=$_POST['fullanme'];
-$mobileno=$_POST['mobileno'];
-$email=$_POST['email']; 
-$password=md5($_POST['password']); 
-$status=1;
-$sql="INSERT INTO  tblstudents(StudentId,FullName,MobileNumber,EmailId,Password,Status) VALUES(:StudentId,:fname,:mobileno,:email,:password,:status)";
-$query = $dbh->prepare($sql);
-$query->bindParam(':StudentId',$StudentId,PDO::PARAM_STR);
-$query->bindParam(':fname',$fname,PDO::PARAM_STR);
-$query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
-$query->bindParam(':email',$email,PDO::PARAM_STR);
-$query->bindParam(':password',$password,PDO::PARAM_STR);
-$query->bindParam(':status',$status,PDO::PARAM_STR);
-$query->execute();
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
-echo '<script>alert("Your Registration successfull and your student id is  "+"'.$StudentId.'")</script>';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+if(isset($_POST['signup'])) {
+    $fname = $_POST['fullanme'];
+    $mobileno = $_POST['mobileno'];
+    $email = $_POST['email']; 
+    $password = md5($_POST['password']); 
+    $status = 1;
+
+    // Check if the email ends with "@nitc.ac.in"
+    if (!endsWith($email, "@nitc.ac.in")) {
+        echo '<script>alert("Not a NITC user. Only @nitc.ac.in emails are allowed for registration.")</script>';
+    } else {
+        // Retrieve the last inserted student ID from the database
+        $sql = "SELECT StudentId FROM tblstudents ORDER BY id DESC LIMIT 1";
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        $lastStudent = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Extract the numeric part and increment it
+        $lastStudentId = $lastStudent['StudentId'];
+        $numericPart = (int)substr($lastStudentId, 3); // Extract the numeric part
+        $newNumericPart = $numericPart + 1; // Increment it by 1
+        $newStudentId = 'SID' . str_pad($newNumericPart, 3, '0', STR_PAD_LEFT); // Format it as "SIDXXX"
+
+        // Prepare the SQL statement with placeholders
+        $sql = "INSERT INTO tblstudents(StudentId,FullName,MobileNumber,EmailId,Password,Status) VALUES(:StudentId,:fname,:mobileno,:email,:password,:status)";
+
+        // Prepare and execute the query
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindParam(':StudentId', $newStudentId, PDO::PARAM_STR);
+        $stmt->bindParam(':fname', $fname, PDO::PARAM_STR);
+        $stmt->bindParam(':mobileno', $mobileno, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+        $stmt->bindParam(':status', $status, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0) {
+            echo '<script>alert("Your Registration is successful and your student id is '.$newStudentId.'")</script>';
+        } else {
+            echo "<script>alert('Something went wrong. Please try again');</script>";
+        }
+
+        // Redirect to the signin page after successful registration
+        header("Location: index.php");
+        exit();
+    }
 }
-else 
-{
-echo "<script>alert('Something went wrong. Please try again');</script>";
-}
+
+// Function to check if a string ends with a specified substring
+function endsWith($haystack, $needle) {
+    $length = strlen($needle);
+    return $length === 0 || substr($haystack, -$length) === $needle;
 }
 
 ?>
@@ -51,7 +71,7 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>Online Library Management System | Student Signup</title>
+    <title>Library Management System | Student Signup</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -73,16 +93,24 @@ echo "<script>alert('Something went wrong. Please try again');</script>";
     <script>
     function checkAvailability() {
         $("#loaderIcon").show();
-        jQuery.ajax({
-            url: "check_availability.php",
-            data: 'emailid=' + $("#emailid").val(),
-            type: "POST",
-            success: function(data) {
-                $("#user-availability-status").html(data);
-                $("#loaderIcon").hide();
-            },
-            error: function() {}
-        });
+        var email = $("#emailid").val();
+
+        // Check if the email ends with "@nitc.ac.in"
+        if (email.endsWith("@nitc.ac.in")) {
+            jQuery.ajax({
+                url: "check_availability.php",
+                data: 'emailid=' + email,
+                type: "POST",
+                success: function(data) {
+                    $("#user-availability-status").html(data);
+                    $("#loaderIcon").hide();
+                },
+                error: function() {}
+            });
+        } else {
+            alert("Retry ! Not a NITC email..");
+            $("#loaderIcon").hide();
+        }
     }
     </script>
 

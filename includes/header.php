@@ -5,7 +5,8 @@
             <B><a href="dashboard.php" style="color: black; text-decoration: none;">LIBRARY MANAGEMENT SYSTEM</a></B></p>
         </div>
 
-<?php if($_SESSION['login'])
+
+<?php if(isset($_SESSION['login']))
 {
 ?>
         <div class="right-div">
@@ -19,7 +20,7 @@
 
 
     <!-- LOGO HEADER END-->
-<?php if($_SESSION['login'])
+<?php if(isset($_SESSION['login']))
 {
 ?>    
 <section class="menu-section">
