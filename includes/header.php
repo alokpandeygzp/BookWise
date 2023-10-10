@@ -1,16 +1,18 @@
 <div class="navbar navbar-inverse set-radius-two">
     <div class="container">
-        <div class="navbar-header left-div">
-        <p style="font-size:26px;margin-left: -12px;color:black;"><img src="assets/img/logo2.webp" height="80px"/>
-            <B><a href="dashboard.php" style="color: black; text-decoration: none;">LIBRARY MANAGEMENT SYSTEM</a></B></p>
+    <div class="navbar-header left-div">
+            <p style="font-size:26px;margin-left: -75px;margin-top: 5px;color:black;"><img  src="assets/img/nitc_logo.jpeg" height="60px" />
+                <B><a href="dashboard.php" style="color: black; margin-left:-30px;background-image: url(assets/img/text_background_1.png); background-size: cover; background-clip:text;-webkit-background-clip:text; color:transparent">NITC LIBRARY MANAGEMENT SYSTEM</a></B>
+                <img style="margin-top: 20px;"  src="assets/img/banner.png" >
+            </p>
+            
         </div>
-
 
 <?php if(isset($_SESSION['login']))
 {
 ?>
         <div class="right-div">
-            <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
+            <a style="margin-top: 20px;"  href="logout.php" class="btn btn-danger pull-right">LOG OUT</a>
         </div>
         <?php }?>
     </div>

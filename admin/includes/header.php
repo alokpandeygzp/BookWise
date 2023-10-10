@@ -22,12 +22,15 @@
 <div class="navbar navbar-inverse set-radius-two">
     <div class="container">
         <div class="navbar-header left-div">
-        <p style="font-size:26px;margin-left: -12px;color:black;"><img src="assets/img/logo2.webp" height="80px"/>
-            <B><a href="dashboard.php" style="color: black; text-decoration: none;">LIBRARY MANAGEMENT SYSTEM</a></B></p>
+            <p style="font-size:26px;margin-left: -75px;margin-top: 5px;color:black;"><img  src="assets/img/nitc_logo.jpeg" height="60px" />
+                <B><a href="dashboard.php" style="color: black; margin-left:-30px;background-image: url(assets/img/text_background_1.png); background-size: cover; background-clip:text;-webkit-background-clip:text; color:transparent" >NITC LIBRARY MANAGEMENT SYSTEM</a></B>
+                <img style="margin-top: 20px;"  src="assets/img/banner.png" >
+            </p>
+            
         </div>
 
         <div class="right-div">
-            <a href="logout.php" class="btn btn-danger pull-right">LOG ME OUT</a>
+            <a style="margin-top: 20px;"  href="logout.php" class="btn btn-danger pull-right">LOG OUT</a>
         </div>
     </div>
 </div>
@@ -43,28 +46,23 @@
                         <li><a href="dashboard.php" class="menu-top-active">DASHBOARD</a></li>
 
                         <li>
-                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Categories <i
-                                    class="fa fa-angle-down"></i></a>
+                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Categories <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="add-category.php">Add
                                         Category</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                        href="manage-categories.php">Manage Categories</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="manage-categories.php">Manage Categories</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Authors <i
-                                    class="fa fa-angle-down"></i></a>
+                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Authors <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="add-author.php">Add
                                         Author</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                        href="manage-authors.php">Manage Authors</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="manage-authors.php">Manage Authors</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Books <i
-                                    class="fa fa-angle-down"></i></a>
+                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Books <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="add-book.php">Add
                                         Book</a></li>
@@ -74,13 +72,11 @@
                         </li>
 
                         <li>
-                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Issue Books <i
-                                    class="fa fa-angle-down"></i></a>
+                            <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown"> Issue Books <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="issue-book.php">Issue New
                                         Book</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1"
-                                        href="manage-issued-books.php">Manage Issued Books</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="manage-issued-books.php">Manage Issued Books</a></li>
                             </ul>
                         </li>
                         <li><a href="reg-students.php">Reg Students</a></li>
