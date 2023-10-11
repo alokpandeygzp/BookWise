@@ -73,36 +73,24 @@ echo "<script>alert('Invalid Details');</script>";
             </div>
             <a name="ulogin"></a>
             <!--LOGIN PANEL START-->
-            <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            LOGIN FORM
-                        </div>
-                        <div class="panel-body">
-                            <form role="form" method="post">
-
-                                <div class="form-group">
-                                    <label>Enter Email id</label>
-                                    <input class="form-control" type="text" name="emailid" required
-                                        autocomplete="off" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="form-control" type="password" name="password" required
-                                        autocomplete="off" />
-                                    <p class="help-block"><a href="user-forgot-password.php">Forgot Password</a></p>
-                                </div>
 
 
-
-                                <button type="submit" name="login" class="btn btn-info">LOGIN </button> | <a
-                                    href="signup.php">Not Register Yet</a>
-                            </form>
-                        </div>
-                    </div>
+            <form method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Enter Email id:</label>
+                    <input class="form-control" type="text" name="emailid" autocomplete="off" required>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password:</label>
+                    <input class="form-control" type="password" name="password" autocomplete="off" required>
+                    <p class="help-block"><a href="user-forgot-password.php">Forgot Password</a></p>
+                </div>
+                <button type="submit" name="login" class="btn btn-primary">LOGIN</button> | <a href="signup.php">Not
+                    Register Yet</a>
+            </form>
+
+
+
             <!---LOGIN PABNEL END-->
         </div>
     </div>

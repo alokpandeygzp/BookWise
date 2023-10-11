@@ -37,7 +37,7 @@ header('location:manage-authors.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Online Library Management System | Add Author</title>
+    <title>Library Management System | Add Author</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -46,52 +46,38 @@ header('location:manage-authors.php');
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
+    <style>
+    .footer-section {
+        text-align: center;
+        padding: 20px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+    </style>
 </head>
 
 <body>
     <!------MENU SECTION START-->
     <?php include('includes/header.php');?>
     <!-- MENU SECTION END-->
-    <div class="content-wra
-    <div class=" content-wrapper">
+    
         <div class="container">
+            <hr />
             <div class="row pad-botm">
                 <div class="col-md-12">
                     <h4 class="header-line">Add Author</h4>
-
                 </div>
-
             </div>
-            <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
-<div class=" panel panel-info">
-                    <div class="panel-heading">
-                        Author Info
-                    </div>
-                    <div class="panel-body">
-                        <form role="form" method="post">
-                            <div class="form-group">
-                                <label>Author Name</label>
-                                <input class="form-control" type="text" name="author" autocomplete="off" required />
-                            </div>
-
-                            <button type="submit" name="create" class="btn btn-info">Add </button>
-                        </form>
-
-                    </div>
+            <form role="form" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Author Name:</label>
+                    <input class="form-control" type="text" name="author" autocomplete="off" required />
                 </div>
-                <br><br>
-                <br>
-                <br>
-                <br><br>
-                <br>
-            </div>
-
+                <button type="submit" name="create" class="btn btn-info">Add </button>
+            </form>
         </div>
-
-    </div>
-    </div>
+    
     <!-- CONTENT-WRAPPER SECTION END-->
     <?php include('includes/footer.php');?>
     <!-- FOOTER SECTION END-->

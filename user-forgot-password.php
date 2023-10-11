@@ -30,6 +30,7 @@ echo "<script>alert('Email id or Mobile no is invalid');</script>";
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -44,82 +45,66 @@ echo "<script>alert('Email id or Mobile no is invalid');</script>";
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-     <script type="text/javascript">
-function valid()
-{
-if(document.chngpwd.newpassword.value!= document.chngpwd.confirmpassword.value)
-{
-alert("New Password and Confirm Password Field do not match  !!");
-document.chngpwd.confirmpassword.focus();
-return false;
-}
-return true;
-}
-</script>
+    <script type="text/javascript">
+    function valid() {
+        if (document.chngpwd.newpassword.value != document.chngpwd.confirmpassword.value) {
+            alert("New Password and Confirm Password Field do not match  !!");
+            document.chngpwd.confirmpassword.focus();
+            return false;
+        }
+        return true;
+    }
+    </script>
 
 </head>
+
 <body>
     <!------MENU SECTION START-->
-<?php include('includes/header.php');?>
-<!-- MENU SECTION END-->
-<div class="content-wrapper">
-<div class="container">
-<div class="row pad-botm">
-<div class="col-md-12">
-<h4 class="header-line">User Password Recovery</h4>
-</div>
-</div>
-             
-<!--LOGIN PANEL START-->           
-<div class="row">
-<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" >
-<div class="panel panel-info">
-<div class="panel-heading">
- LOGIN FORM
-</div>
-<div class="panel-body">
-<form role="form" name="chngpwd" method="post" onSubmit="return valid();">
+    <?php include('includes/header.php');?>
+    <!-- MENU SECTION END-->
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row pad-botm">
+                <div class="col-md-12">
+                    <h4 class="header-line">User Password Recovery</h4>
+                </div>
+            </div>
 
-<div class="form-group">
-<label>Enter Reg Email id</label>
-<input class="form-control" type="email" name="email" required autocomplete="off" />
-</div>
-
-<div class="form-group">
-<label>Enter Reg Mobile No</label>
-<input class="form-control" type="text" name="mobile" required autocomplete="off" />
-</div>
-
-<div class="form-group">
-<label>Password</label>
-<input class="form-control" type="password" name="newpassword" required autocomplete="off"  />
-</div>
-
-<div class="form-group">
-<label>ConfirmPassword</label>
-<input class="form-control" type="password" name="confirmpassword" required autocomplete="off"  />
-</div>
+            <!--LOGIN PANEL START-->
+            <form role="form" name="chngpwd" method="post" onSubmit="return valid();">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Enter Reg Email id</label>
+                    <input class="form-control" type="email" name="email" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Enter Reg Mobile id</label>
+                    <input class="form-control" type="text" name="mobile" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password:</label>
+                    <input class="form-control" type="password" name="newpassword" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password:</label>
+                    <input class="form-control" type="password" name="confirmpassword" autocomplete="off" required>
+                </div>
+                <button type="submit" name="change" class="btn btn-info">Change Password</button> | <a
+                                    href="index.php">Login</a>
+            </form>
+            <!---LOGIN PABNEL END-->
 
 
- <button type="submit" name="change" class="btn btn-info">Chnage Password</button> | <a href="index.php">Login</a>
-</form>
- </div>
-</div>
-</div>
-</div>  
-<!---LOGIN PABNEL END-->            
-             
- 
+        </div>
     </div>
-    </div>
-     <!-- CONTENT-WRAPPER SECTION END-->
- <?php include('includes/footer.php');?>
-      <!-- FOOTER SECTION END-->
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <?php include('includes/footer.php');?>
+    <!-- FOOTER SECTION END-->
     <script src="assets/js/jquery-1.10.2.js"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
     <script src="assets/js/bootstrap.js"></script>
-      <!-- CUSTOM SCRIPTS  -->
+    <!-- CUSTOM SCRIPTS  -->
     <script src="assets/js/custom.js"></script>
 
 </body>
+
 </html>
