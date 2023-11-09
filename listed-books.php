@@ -83,7 +83,7 @@ include('includes/header.php');
     <div class="container">
         <div class="row pad-botm">
             <div class="col-md-12">
-                <h4 class="header-line">Manage Issued Books</h4>
+                <h4 class="header-line">View Books</h4>
             </div>
         </div>
 

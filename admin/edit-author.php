@@ -12,9 +12,11 @@ if(isset($_POST['update']))
 {
 $athrid=intval($_GET['athrid']);
 $author=$_POST['author'];
-$sql="update  tblauthors set AuthorName=:author where id=:athrid";
+$email=$_POST['email'];
+$sql="update  tblauthors set AuthorName=:author, Email=:email where id=:athrid";
 $query = $dbh->prepare($sql);
 $query->bindParam(':author',$author,PDO::PARAM_STR);
+$query->bindParam(':email',$email,PDO::PARAM_STR);
 $query->bindParam(':athrid',$athrid,PDO::PARAM_STR);
 $query->execute();
 $_SESSION['updatemsg']="Author info updated successfully";
@@ -84,6 +86,9 @@ foreach($results as $result)
 {               ?>
                 <input class="form-control" type="text" name="author"
                     value="<?php echo htmlentities($result->AuthorName);?>" required />
+                    <br>
+                <input class="form-control" type="email" name="email"
+                    value="<?php echo htmlentities($result->Email);?>" required />
                 <?php }} ?>
             </div>
             <button type="submit" name="update" class="btn btn-info">Update </button>

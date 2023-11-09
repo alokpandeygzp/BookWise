@@ -87,6 +87,7 @@ header('location:manage-issued-books.php');
         color: red;
     }
     </style>
+    
 </head>
 
 <body class="main-content">
@@ -126,8 +127,8 @@ header('location:manage-issued-books.php');
             <button type="submit" name="issue" id="submit" class="btn btn-info">Issue Book </button>
 
         </form>
-<br/>
-<br/><br/><br/>
+        <br />
+        <br /><br /><br />
     </div>
 
     <!-- CONTENT-WRAPPER SECTION END-->

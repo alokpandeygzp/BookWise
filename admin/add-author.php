@@ -11,9 +11,11 @@ else{
 if(isset($_POST['create']))
 {
 $author=$_POST['author'];
-$sql="INSERT INTO  tblauthors(AuthorName) VALUES(:author)";
+$email=$_POST['email'];
+$sql="INSERT INTO  tblauthors(AuthorName,Email) VALUES(:author, :email)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':author',$author,PDO::PARAM_STR);
+$query->bindParam(':email',$email,PDO::PARAM_STR);
 $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
@@ -73,6 +75,10 @@ header('location:manage-authors.php');
                 <div class="form-group">
                     <label for="exampleInputEmail1">Author Name:</label>
                     <input class="form-control" type="text" name="author" autocomplete="off" required />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Author Email:</label>
+                    <input class="form-control" type="email" name="email" autocomplete="off" required />
                 </div>
                 <button type="submit" name="create" class="btn btn-info">Add </button>
             </form>
